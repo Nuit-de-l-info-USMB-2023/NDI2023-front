@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { takeUntil } from 'rxjs';
-import { BaseAppComponent } from '../../../core/components/base-app/base-app.component';
 import { AuthService } from '../../../core/services/auth/auth.service';
 
 @Component({
@@ -10,7 +9,7 @@ import { AuthService } from '../../../core/services/auth/auth.service';
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss'],
 })
-export class LoginPageComponent extends BaseAppComponent implements OnInit {
+export class LoginPageComponent implements OnInit {
   loginForm!: FormGroup;
   errorMessage: string = '';
   errorInForm: boolean = false;
@@ -19,14 +18,11 @@ export class LoginPageComponent extends BaseAppComponent implements OnInit {
     private authService: AuthService,
     private formBuilder: FormBuilder,
     private router: Router
-  ) {
-    super();
-  }
+  ) {}
 
   async onSubmitForm() {
     this.authService
       .login(this.loginForm.value.login, this.loginForm.value.password)
-      .pipe(takeUntil(this.destroy$))
       .subscribe(loggedIn => {
         if (loggedIn) {
           this.router.navigate(['/home']);

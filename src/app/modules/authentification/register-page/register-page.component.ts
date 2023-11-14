@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { takeUntil } from 'rxjs';
-import { BaseAppComponent } from '../../../core/components/base-app/base-app.component';
 import { AuthService } from '../../../core/services/auth/auth.service';
 import { passwordMatchValidator } from '../../../shared/validators/password-match.validator';
 import { ROUTES } from '../../../core/constants/routes';
@@ -12,7 +11,7 @@ import { ROUTES } from '../../../core/constants/routes';
   templateUrl: './register-page.component.html',
   styleUrls: ['./register-page.component.scss'],
 })
-export class RegisterPageComponent extends BaseAppComponent implements OnInit {
+export class RegisterPageComponent implements OnInit {
   signupForm!: FormGroup;
   errorMessage: string = '';
   errorInForm: boolean = false;
@@ -22,9 +21,7 @@ export class RegisterPageComponent extends BaseAppComponent implements OnInit {
     private authService: AuthService,
     private formBuilder: FormBuilder,
     private router: Router
-  ) {
-    super();
-  }
+  ) {}
 
   async onSubmitForm() {
     if (
@@ -38,7 +35,6 @@ export class RegisterPageComponent extends BaseAppComponent implements OnInit {
 
     this.authService
       .register(this.signupForm.value.login, this.signupForm.value.password)
-      .pipe(takeUntil(this.destroy$))
       .subscribe(registered => {
         if (registered) {
           this.router.navigate([ROUTES.authentification + '/login']);
@@ -64,7 +60,6 @@ export class RegisterPageComponent extends BaseAppComponent implements OnInit {
 
     //listen to changes in the form and update the error message accordingly
     this.formObserver$ = this.signupForm.valueChanges
-      .pipe(takeUntil(this.destroy$))
       .subscribe(value => {
         if (
           value.password != value.passwordVerification &&
