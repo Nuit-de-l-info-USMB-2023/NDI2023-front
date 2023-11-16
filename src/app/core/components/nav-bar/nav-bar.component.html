@@ -15,12 +15,12 @@
 
   <!-- nav items -->
 
-  <div class="navbar-end">
+  <div class="navbar-end gap-3">
     <ng-container *ngIf="(this.connected$ | async) as connected; else notConnected">
-      <button class="btn btn-primary">Connexion</button>
+      coucou
     </ng-container>
     <ng-template #notConnected>
-      <button class="btn btn-primary">Connexion</button>
+      <button class="btn btn-primary" (click)="openDialogAuth()" >Connexion</button>
     </ng-template>
   </div>
 

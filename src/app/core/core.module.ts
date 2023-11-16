@@ -8,6 +8,9 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { RouterModule } from '@angular/router';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { BaseComponent } from './components/base/base.component';
+import {AuthentificationModule} from "../modules/authentification/authentification.module";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -15,8 +18,9 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
     NotFoundComponent,
     NavBarComponent,
     SideBarComponent,
+    BaseComponent,
   ],
-  imports: [CommonModule, HttpClientModule, RouterModule],
+    imports: [CommonModule, HttpClientModule, RouterModule, AuthentificationModule, ReactiveFormsModule],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
@@ -24,12 +28,12 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
       multi: true,
     },
   ],
-  exports: [
-    LoadingComponent,
-    NotFoundComponent,
-    NavBarComponent,
-    SideBarComponent,
-  ],
+    exports: [
+        LoadingComponent,
+        NotFoundComponent,
+        NavBarComponent,
+        SideBarComponent,
+    ],
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {

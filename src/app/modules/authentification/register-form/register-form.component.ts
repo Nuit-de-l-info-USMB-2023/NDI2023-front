@@ -1,17 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { takeUntil } from 'rxjs';
 import { AuthService } from '../../../core/services/auth/auth.service';
 import { passwordMatchValidator } from '../../../shared/validators/password-match.validator';
-import { ROUTES } from '../../../core/constants/routes';
 
 @Component({
-  selector: 'app-register-page',
-  templateUrl: './register-page.component.html',
-  styleUrls: ['./register-page.component.scss'],
+  selector: 'app-register-form',
+  templateUrl: './register-form.component.html',
+  styleUrls: ['./register-form.component.scss'],
 })
-export class RegisterPageComponent implements OnInit {
+export class RegisterFormComponent implements OnInit {
   signupForm!: FormGroup;
   errorMessage: string = '';
   errorInForm: boolean = false;
@@ -20,7 +17,6 @@ export class RegisterPageComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
-    private router: Router
   ) {}
 
   async onSubmitForm() {
@@ -37,7 +33,7 @@ export class RegisterPageComponent implements OnInit {
       .register(this.signupForm.value.login, this.signupForm.value.password)
       .subscribe(registered => {
         if (registered) {
-          this.router.navigate([ROUTES.authentification + '/login']);
+          //this.router.navigate([ROUTES.authentification + '/login']);
         } else {
           this.errorInForm = true;
           this.errorMessage = 'An error occured';

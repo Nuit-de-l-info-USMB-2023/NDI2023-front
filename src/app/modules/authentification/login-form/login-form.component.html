@@ -1,0 +1,31 @@
+<form [formGroup]="loginForm" class="flex flex-col gap-5">
+  <h3 class="font-bold text-lg">Login</h3>
+  <input
+    type="text"
+    formControlName="login"
+    class="input input-bordered"
+    id="login"
+    placeholder="Enter username" />
+  <input
+    type="password"
+    formControlName="password"
+    class="input input-bordered"
+    id="password"
+    placeholder="Password" />
+  <p *ngIf="errorInForm" class="text-error">{{ errorMessage }}</p>
+  <div class="flex gap-2 justify-end">
+    <button
+      type="button"
+      (click)="handleCancel()"
+      class="btn btn-ghost">
+      Annuler
+    </button>
+    <button
+      type="submit"
+      (click)="handleSubmitForm()"
+      class="btn btn-primary"
+      [disabled]="loginForm.invalid">
+      Valider
+    </button>
+  </div>
+</form>

@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../core/services/user/user.service';
-import { takeUntil } from 'rxjs';
 import { AuthService } from '../../../core/services/auth/auth.service';
-import { Router } from '@angular/router';
-import { ROUTES } from '../../../core/constants/routes';
 
 @Component({
   selector: 'app-profile-page',
@@ -15,8 +12,7 @@ export class ProfilePageComponent implements OnInit {
 
   constructor(
     private readonly userService: UserService,
-    private readonly authService: AuthService,
-    private readonly router: Router
+    private readonly authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -29,6 +25,6 @@ export class ProfilePageComponent implements OnInit {
 
   logout() {
     this.authService.logout();
-    this.router.navigate([ROUTES.authentification + '/login']);
+    //this.router.navigate([ROUTES.authentification + '/login']);
   }
 }

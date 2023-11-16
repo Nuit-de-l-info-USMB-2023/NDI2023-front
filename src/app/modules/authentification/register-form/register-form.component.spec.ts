@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RegisterPageComponent } from './register-page.component';
+import { RegisterPageComponent } from './register-form.component';
 import { AuthentificationModule } from '../authentification.module';
 
 describe('RegisterPageComponent', () => {
