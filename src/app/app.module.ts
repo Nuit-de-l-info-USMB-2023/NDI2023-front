@@ -7,6 +7,7 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { RouterModule } from '@angular/router';
 import {ModalModule} from "../lib/modal/modal.module";
+import {ToastModule} from "../lib/toast/toast.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,6 +18,7 @@ import {ModalModule} from "../lib/modal/modal.module";
         SharedModule,
         AppRoutingModule,
         ModalModule,
+        ToastModule,
     ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,0 +1,5 @@
+<ng-container *ngFor="let i of [0, 1, 2]">
+  <ng-container *ngFor="let j of [0, 1, 2]">
+    <app-toast [coordinate]="[i,j]"></app-toast>
+  </ng-container>
+</ng-container>

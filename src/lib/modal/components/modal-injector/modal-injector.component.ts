@@ -13,7 +13,7 @@ interface checkModal {
 }
 
 @Component({
-  selector: 'app-modal-injector',
+  selector: 'ad-modal-injector',
   templateUrl: './modal-injector.component.html',
   styleUrls: ['./modal-injector.component.scss'],
 })
