@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from './core/services/auth/auth.service';
-import { takeUntil } from 'rxjs';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AuthService} from './core/services/auth/auth.service';
+import {takeUntil} from 'rxjs';
 import {BaseComponent} from "./core/components/base/base.component";
+import {ToastService} from "../lib/toast/services/toast.service";
+import {AlertType} from "../lib/alert/models/alert-type";
+import {LoginFormComponent} from "./modules/authentification/login-form/login-form.component";
 
 @Component({
   selector: 'app-root',

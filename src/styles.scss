@@ -2,3 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 @import "@flaticon/flaticon-uicons/css/all/all";
+
+
+.fi{
+  line-height: 0.5em;
+  vertical-align: -0.15em;
+
+  display: inline-flex;
+}

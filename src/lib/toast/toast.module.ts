@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ToastInjectorComponent } from './components/toast-injector/toast-injector.component';
 import { ToastComponent } from './components/toast/toast.component';
+import {AlertModule} from "../alert/alert.module";
 
 
 
@@ -14,7 +15,8 @@ import { ToastComponent } from './components/toast/toast.component';
     ToastInjectorComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    AlertModule
   ]
 })
 export class ToastModule { }

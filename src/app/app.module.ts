@@ -8,10 +8,12 @@ import { SharedModule } from './shared/shared.module';
 import { RouterModule } from '@angular/router';
 import {ModalModule} from "../lib/modal/modal.module";
 import {ToastModule} from "../lib/toast/toast.module";
+import {CommonModule} from "@angular/common";
 
 @NgModule({
   declarations: [AppComponent],
     imports: [
+        CommonModule,
         BrowserModule,
         CoreModule,
         RouterModule,

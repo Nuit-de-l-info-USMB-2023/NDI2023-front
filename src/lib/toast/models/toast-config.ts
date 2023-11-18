@@ -1,4 +1,4 @@
-import {AlertType} from "../../alert/components/alert/alert.component";
+import {AlertType} from "../../alert/models/alert-type";
 
 export interface ToastItemConfig{
   alertType?: AlertType;

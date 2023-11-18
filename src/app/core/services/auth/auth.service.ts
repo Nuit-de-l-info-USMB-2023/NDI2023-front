@@ -6,6 +6,8 @@ import { AuthPayload } from '../../models/api/auth-payload';
 import { environment } from '../../../../environments/environment';
 import { ToastLevel } from '../../models/toast-level';
 import { getErrorMessage } from '../../utils/errors.utils';
+import {ToastService} from "../../../../lib/toast/services/toast.service";
+import {AlertType} from "../../../../lib/alert/models/alert-type";
 
 @Injectable({
   providedIn: 'root',
@@ -16,6 +18,7 @@ export class AuthService {
 
   constructor(
     private readonly http: HttpClient,
+    private toastService: ToastService
   ) {
     this.setupFromLocalStorage();
   }
@@ -45,6 +48,7 @@ export class AuthService {
         return true;
       }),
       catchError(err => {
+        this.backendConnextionFailed();
         return of(false);
       })
     );
@@ -65,7 +69,7 @@ export class AuthService {
         return true;
       }),
       catchError(err => {
-        //this.toastService.Show(getErrorMessage(err), ToastLevel.Error); //TODO: fix this
+        this.backendConnextionFailed();
         return of(false);
       })
     );
@@ -90,8 +94,7 @@ export class AuthService {
       }),
       catchError(err => {
         console.log(err);
-
-        //this.toastService.Show(getErrorMessage(err), ToastLevel.Error); //TODO: fix this
+        this.backendConnextionFailed();
         return of(false);
       })
     );
@@ -101,5 +104,9 @@ export class AuthService {
     this._token = '';
     localStorage.removeItem('token');
     this._connectedSubject.next(false);
+  }
+
+  backendConnextionFailed(): void {
+    this.toastService.showMessage('Connexion au backend impossible', {alertType: AlertType.ERROR, duration: 5000});
   }
 }

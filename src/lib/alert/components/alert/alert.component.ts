@@ -1,19 +1,14 @@
 import {
-  AfterViewInit,
+  AfterViewInit, ChangeDetectorRef,
   Component, ElementRef,
   HostBinding,
-  Input, OnDestroy,
+  Input,
   OnInit,
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
-
-export enum AlertType {
-  SUCCESS = 'alert-success',
-  INFO = 'alert-info',
-  WARNING = 'alert-warning',
-  ERROR = 'alert-error'
-}
+import {MessageComponent} from "../message/message.component";
+import {AlertType, iconsForType} from "../../models/alert-type";
 
 @Component({
   selector: 'app-alert',
@@ -21,14 +16,15 @@ export enum AlertType {
   styleUrls: ['./alert.component.scss']
 })
 export class AlertComponent implements OnInit, AfterViewInit{
-  @Input() alertType!: AlertType;
+  @Input() alertType?: AlertType;
   @HostBinding('class') hostClass!: string;
-  @ViewChild('alertContainer', { read: ViewContainerRef })
-  alertContainer!: ViewContainerRef;
-  component?: any;
+  @ViewChild('alertContainer', { read: ViewContainerRef }) alertContainer!: ViewContainerRef;
+  name?: string;
+  content?: any;
   duration?: number;
+  icon?: string;
 
-  constructor(private host: ElementRef<HTMLElement>) {
+  constructor(public host: ElementRef<HTMLElement>, private detector: ChangeDetectorRef){
   }
 
   ngOnInit() {
@@ -42,10 +38,35 @@ export class AlertComponent implements OnInit, AfterViewInit{
   }
 
   ngAfterViewInit() {
-    this.loadComponent(this.component);
+    //get type of component
+    if(typeof this.content === 'string'){
+      this.loadMessage(this.content);
+    }else{
+      this.loadComponent(this.content);
+    }
   }
 
   loadComponent(component: any) {
     const componentRef = this.alertContainer.createComponent(component);
+    componentRef.changeDetectorRef.detectChanges();
+  }
+
+  loadMessage(message: string) {
+      const componentRef = this.alertContainer.createComponent(MessageComponent);
+      componentRef.instance.message = message;
+      this.setIcon();
+      componentRef.changeDetectorRef.detectChanges();
+  }
+
+    setIcon(){
+      if (this.alertType){
+          iconsForType.forEach((iconType) => {
+              if(iconType.type == this.alertType){
+                  this.icon = iconType.icon;
+                  this.detector.detectChanges();
+                  return;
+              }
+          });
+      }
   }
 }
