@@ -6,8 +6,7 @@ import {
   CanActivateFn,
 } from '@angular/router';
 import { catchError, of } from 'rxjs';
-import { map, take } from 'rxjs/operators';
-import { ROUTES } from '../constants/routes';
+import { take } from 'rxjs/operators';
 import { AuthService } from '../services/auth/auth.service';
 
 export const AuthGuard: CanActivateFn = (
@@ -20,7 +19,7 @@ export const AuthGuard: CanActivateFn = (
   return authService.isTokenValid().pipe(
     take(1),
     catchError(err => {
-      router.navigate([ROUTES.authentification + '/login']);
+      //router.navigate([ROUTES.authentification + '/login']);
       return of(false);
     })
   );

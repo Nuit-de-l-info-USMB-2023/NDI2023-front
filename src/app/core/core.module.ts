@@ -7,22 +7,22 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { RouterModule } from '@angular/router';
-import { BaseAppComponent } from './components/base-app/base-app.component';
-import { ModalInjectorComponent } from './components/modal-injector/modal-injector.component';
-import { ToastComponent } from './components/toast/toast.component';
-import { BaseModalComponent } from './components/base-modal/base-modal.component';
+import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { BaseComponent } from './components/base/base.component';
+import {AuthentificationModule} from "../modules/authentification/authentification.module";
+import {ReactiveFormsModule} from "@angular/forms";
+import { LogoComponent } from './components/logo/logo.component';
 
 @NgModule({
   declarations: [
-    ToastComponent,
     LoadingComponent,
     NotFoundComponent,
     NavBarComponent,
-    BaseAppComponent,
-    ModalInjectorComponent,
-    BaseModalComponent,
+    SideBarComponent,
+    BaseComponent,
+    LogoComponent,
   ],
-  imports: [CommonModule, HttpClientModule, RouterModule],
+    imports: [CommonModule, HttpClientModule, RouterModule, AuthentificationModule, ReactiveFormsModule],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
@@ -30,13 +30,12 @@ import { BaseModalComponent } from './components/base-modal/base-modal.component
       multi: true,
     },
   ],
-  exports: [
-    ToastComponent,
-    LoadingComponent,
-    NotFoundComponent,
-    NavBarComponent,
-    ModalInjectorComponent,
-  ],
+    exports: [
+        LoadingComponent,
+        NotFoundComponent,
+        NavBarComponent,
+        SideBarComponent,
+    ],
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {

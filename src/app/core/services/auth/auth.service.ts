@@ -1,23 +1,24 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { of, Observable, catchError, map, take } from 'rxjs';
+import {of, Observable, catchError, map, take, BehaviorSubject} from 'rxjs';
 import { TokenPayload } from '../../models/api/token-payload';
 import { AuthPayload } from '../../models/api/auth-payload';
 import { environment } from '../../../../environments/environment';
-import { ToastService } from '../toast/toast.service';
 import { ToastLevel } from '../../models/toast-level';
 import { getErrorMessage } from '../../utils/errors.utils';
+import {ToastService} from "../../../../lib/toast/services/toast.service";
+import {AlertType} from "../../../../lib/alert/models/alert-type";
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private _token: string = '';
-  private _connected: boolean = false;
+  private _connectedSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(
     private readonly http: HttpClient,
-    private readonly toastService: ToastService
+    private toastService: ToastService
   ) {
     this.setupFromLocalStorage();
   }
@@ -27,12 +28,16 @@ export class AuthService {
   }
 
   public get connected(): boolean {
-    return this._connected;
+    return this._connectedSubject.value;
+  }
+
+  public get connected$(): Observable<boolean> {
+    return this._connectedSubject.asObservable();
   }
 
   private setupFromLocalStorage(): void {
     this._token = localStorage.getItem('token') || '';
-    this._connected = !!this._token;
+    this._connectedSubject.next(!!this._token);
   }
 
   isTokenValid(): Observable<boolean> {
@@ -43,6 +48,7 @@ export class AuthService {
         return true;
       }),
       catchError(err => {
+        this.backendConnextionFailed();
         return of(false);
       })
     );
@@ -59,11 +65,11 @@ export class AuthService {
         if (!res.token) return false;
         this._token = res.token;
         localStorage.setItem('token', res.token);
-        this._connected = true;
+        this._connectedSubject.next(true);
         return true;
       }),
       catchError(err => {
-        this.toastService.Show(getErrorMessage(err), ToastLevel.Error);
+        this.backendConnextionFailed();
         return of(false);
       })
     );
@@ -82,14 +88,13 @@ export class AuthService {
       map(res => {
         if (res.id) return true;
         else {
-          this.toastService.Show('Something went wrong', ToastLevel.Error);
+          //this.toastService.Show('Something went wrong', ToastLevel.Error); //TODO: fix this
           return false;
         }
       }),
       catchError(err => {
         console.log(err);
-
-        this.toastService.Show(getErrorMessage(err), ToastLevel.Error);
+        this.backendConnextionFailed();
         return of(false);
       })
     );
@@ -98,6 +103,10 @@ export class AuthService {
   logout(): void {
     this._token = '';
     localStorage.removeItem('token');
-    this._connected = false;
+    this._connectedSubject.next(false);
+  }
+
+  backendConnextionFailed(): void {
+    this.toastService.showMessage('Connexion au backend impossible', {alertType: AlertType.ERROR, duration: 5000});
   }
 }

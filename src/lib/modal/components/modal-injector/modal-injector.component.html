@@ -1,0 +1,9 @@
+<ng-container *ngIf="checkModal$ | async as checkModal">
+  <input [checked]="checkModal.value" type="checkbox" id="my_modal" class="modal-toggle" />
+  <div class="modal">
+    <div class="modal-box">
+      <ng-template #modalContainer></ng-template>
+    </div>
+      <button (click)="handleCloseModal()" class="modal-backdrop"></button>
+  </div>
+</ng-container>
