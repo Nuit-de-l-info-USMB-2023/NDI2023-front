@@ -5,11 +5,7 @@
       <i class="fi fi-rr-menu-burger text-lg"></i>
     </label>
     <div class="lg:hidden">
-      <a routerLink="/home" class="avatar">
-        <div class="h-10">
-          <img src="assets/icons/logo.svg" alt="logo" />
-        </div>
-      </a>
+      <app-logo></app-logo>
     </div>
   </div>
 
@@ -20,6 +16,7 @@
       coucou
     </ng-container>
     <ng-template #notConnected>
+      <button class="btn btn-neutral" (click)="test()">theme</button>
       <button class="btn btn-primary" (click)="openDialogAuth()" >Connexion</button>
     </ng-template>
   </div>

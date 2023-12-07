@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import {ModalModule} from "../lib/modal/modal.module";
 import {ToastModule} from "../lib/toast/toast.module";
 import {CommonModule} from "@angular/common";
+import {ThemeModule} from "../lib/theme/theme.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +22,7 @@ import {CommonModule} from "@angular/common";
         AppRoutingModule,
         ModalModule,
         ToastModule,
+        ThemeModule
     ],
   providers: [],
   bootstrap: [AppComponent],

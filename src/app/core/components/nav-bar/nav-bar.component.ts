@@ -3,6 +3,7 @@ import { AuthService } from '../../services/auth/auth.service';
 import {Observable} from "rxjs";
 import {ModalService} from "../../../../lib/modal/services/modal.service";
 import {AuthModalComponent} from "../../../modules/authentification/auth-modal/auth-modal.component";
+import {ThemeService} from "../../../../lib/theme/service/theme.service";
 
 @Component({
   selector: 'app-nav-bar',
@@ -14,8 +15,13 @@ export class NavBarComponent{
 
   connected$:Observable<boolean>;
 
-  constructor(public readonly authService: AuthService, private modalService: ModalService) {
+  theme?:string;
+
+  constructor(public readonly authService: AuthService, private modalService: ModalService, private themeService: ThemeService) {
     this.connected$ = authService.connected$;
+    this.themeService.theme$.subscribe(theme => {
+      this.theme = theme;
+    });
   }
 
   openDialogAuth() {
@@ -25,4 +31,9 @@ export class NavBarComponent{
       console.log(result);
     });
   }
+
+  test(){
+    this.theme === 'light' ? this.themeService.setTheme('dark') : this.themeService.setTheme('light');
+  }
+
 }

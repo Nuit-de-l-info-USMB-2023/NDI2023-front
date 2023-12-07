@@ -11,6 +11,7 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { BaseComponent } from './components/base/base.component';
 import {AuthentificationModule} from "../modules/authentification/authentification.module";
 import {ReactiveFormsModule} from "@angular/forms";
+import { LogoComponent } from './components/logo/logo.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     NavBarComponent,
     SideBarComponent,
     BaseComponent,
+    LogoComponent,
   ],
     imports: [CommonModule, HttpClientModule, RouterModule, AuthentificationModule, ReactiveFormsModule],
   providers: [
