@@ -1,7 +1,10 @@
 <nav class="navbar bg-opacity-90 backdrop-blur">
   <!-- Logo -->
   <div class="navbar-start">
-    <label for="my-drawer" tabindex="0" class="drawer-button btn btn-ghost btn-circle lg:hidden">
+    <label
+      for="my-drawer"
+      tabindex="0"
+      class="drawer-button btn btn-ghost btn-circle lg:hidden">
       <i class="fi fi-rr-menu-burger text-lg"></i>
     </label>
     <div class="lg:hidden">
@@ -12,7 +15,8 @@
   <!-- nav items -->
 
   <div class="navbar-end gap-3">
-    <ng-container *ngIf="(this.connected$ | async) as connected; else notConnected">
+    <ng-container
+      *ngIf="this.connected$ | async as connected; else notConnected">
       coucou
     </ng-container>
     <ng-template #notConnected>
@@ -24,18 +28,22 @@
           </div>
 
         </summary>
-        <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-200 rounded-box w-52">
+        <ul
+          class="p-2 shadow menu dropdown-content z-[1] bg-base-200 rounded-box w-52">
           <li (click)="setTheme('light')"><a>Clair</a></li>
           <li (click)="setTheme('dark')"><a>Sombre</a></li>
-          <li (click)="setTheme('xmas')"><a>
-            Noël
-            <i class="fi fi-br-hat-santa"></i>
-            <div class="badge badge-primary">new</div>
-          </a></li>
+          <li (click)="setTheme('xmas')">
+            <a>
+              Noël
+              <i class="fi fi-br-hat-santa"></i>
+              <div class="badge badge-primary">new</div>
+            </a>
+          </li>
         </ul>
       </details>
-      <button class="btn btn-primary" (click)="openDialogAuth()" >Connexion</button>
+      <button class="btn btn-primary" (click)="openDialogAuth()">
+        Connexion
+      </button>
     </ng-template>
   </div>
-
 </nav>
