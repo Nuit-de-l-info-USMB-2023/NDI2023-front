@@ -1,16 +1,20 @@
-<div #card class="flex flex-col text-neutral-content max-w-[700px] bg-base-100 rounded-2xl" >
-  <div #head class="flex justify-between p-3 items-center ">
-    <div #head_user class="flex items-center gap-3 ">
+<div #card class="max-w-[700px] rounded-2xl card">
+  <div #head class="flex justify-between p-3 items-center">
+    <div #head_user class="flex items-center gap-3">
       <div #head_user_avatar>
         <div class="avatar">
-        <div class="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-          <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+          <div class="w-12 rounded-full">
+            <img
+              src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+          </div>
         </div>
-      </div></div>
-      <h2 #head_user_name class="text-xl">Pauline</h2>
+      </div>
+      <h2 #head_user_name class="text-xl">{{ post?.user?.username }}</h2>
     </div>
     <div #head_actions>
-      <button class="btn btn-ghost btn-circle"><i class="fi fi-br-menu-dots-vertical"></i></button>
+      <button class="btn btn-ghost btn-circle">
+        <i class="fi fi-br-menu-dots-vertical"></i>
+      </button>
     </div>
   </div>
   <div class="px-3">
@@ -18,13 +22,15 @@
   </div>
   <div class="text-xl m-3">
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed leo enim, accumsan sed dictum id, molestie nec sem. Donec a dui id enim fringilla tellus.
+      {{ post?.description }}
     </p>
   </div>
-  <div #illustration><img src="https://www.leparisien.fr/resizer/1hL5eFLS404IQLut5Wx5G3u2U-0=/932x582/cloudfront-eu-central-1.images.arcpublishing.com/lpguideshopping/7PPBS63F3NEIRDWONOIM24VORY.jpg"></div>
+  <div #illustration>
+    <img
+      src="https://www.leparisien.fr/resizer/1hL5eFLS404IQLut5Wx5G3u2U-0=/932x582/cloudfront-eu-central-1.images.arcpublishing.com/lpguideshopping/7PPBS63F3NEIRDWONOIM24VORY.jpg" />
+  </div>
   <div #body class="p-4 flex flex-col gap-4 text-lg">
     <div #body_head class="flex justify-between items-center">
-
       <div #body_head_actions class="flex gap-4">
         <button class="btn btn-ghost">
           37.5k
@@ -32,10 +38,9 @@
         </button>
 
         <button class="btn btn-ghost btn-circle">
-        <i class="fi fi-br-share"></i>
-      </button>
+          <i class="fi fi-br-share"></i>
+        </button>
       </div>
-  </div>
-
+    </div>
   </div>
 </div>
