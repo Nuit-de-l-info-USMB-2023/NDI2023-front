@@ -7,17 +7,16 @@
     <li class="hidden lg:block"></li>
 
     <li>
-      <a href="/defis" data-sveltekit-preload-data="hover" class="">
+      <a routerLink="/defis" data-sveltekit-preload-data="hover" class="">
         <i class="fi fi-rr-calendar-clock w-5 h-5 text-secondary"></i>
         <span class="undefined">Défis</span>
       </a>
       <ul class="menu bg-base-200 w-56 rounded-box">
-        <li><a>Journalier</a></li>
-        <li><a>Hebdomadaire</a></li>
-        <li><a>Mensuel</a></li>
+        <li><a routerLink="/defis/journalier">Journalier</a></li>
+        <li><a routerLink="/defis/hebdomadaire">Hebdomadaire</a></li>
+        <li><a routerLink="/defis/mensuel">Mensuel</a></li>
       </ul>
     </li>
     <li><a>A propos</a></li>
   </ul>
 </div>
-
