@@ -6,8 +6,8 @@ import { NotFoundComponent } from './core/components/not-found/not-found.compone
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
+    loadChildren: () =>
+      import('./modules/welcome/welcome.module').then(m => m.WelcomeModule),
   },
   {
     path: ROUTES.home,
@@ -18,6 +18,11 @@ const routes: Routes = [
     path: ROUTES.user,
     loadChildren: () =>
       import('./modules/user/user.module').then(m => m.UserModule),
+  },
+  {
+    path: ROUTES.defis,
+    loadChildren: () =>
+      import('./modules/defis/defis.module').then(m => m.DefisModule),
   },
   { path: ROUTES.notFound, component: NotFoundComponent },
   { path: '**', redirectTo: ROUTES.notFound },

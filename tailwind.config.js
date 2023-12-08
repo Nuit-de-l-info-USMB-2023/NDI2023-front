@@ -1,16 +1,4 @@
-primary = "#0798F2";
-secondary = "#FF5F91";
-neutral = "#3d4451";
-
-//dark
-darkBg = "#171B26";
-darkBg2 = "#1C3659";
-
-//light
-lightBg = "#F9FAFB";
-lightBg2 = "#E5E7EB";
-
-
+import {lightTheme, darkTheme, xmasTheme} from "./src/lib/theme/models/theme";
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -24,21 +12,30 @@ module.exports = {
       {
         dark: {
           ...require("daisyui/src/theming/themes")["dark"],
-          'primary': primary,
-          'secondary': secondary,
-          'accent': lightBg,
-          'neutral': neutral,
-          'base-100': darkBg,
-          '--base-200': darkBg2,
+          'primary': darkTheme.primary,
+          'secondary': darkTheme.secondary,
+          'accent': darkTheme.accent,
+          'neutral': darkTheme.neutral,
+          'base-100': darkTheme.base_100,
+          'base-200': darkTheme.base_200
         },
         light: {
           ...require("daisyui/src/theming/themes")["light"],
-          'primary': primary,
-          'secondary': secondary,
-          'accent': darkBg,
-          'neutral': neutral,
-          'base-100': lightBg,
-          '--base-200': lightBg2,
+          'primary': lightTheme.primary,
+          'secondary': lightTheme.secondary,
+          'accent': lightTheme.accent,
+          'neutral': lightTheme.neutral,
+          'base-100': lightTheme.base_100,
+          'base-200': lightTheme.base_200
+        },
+        xmas: {
+          ...require("daisyui/src/theming/themes")["dark"],
+          'primary': xmasTheme.primary,
+          'secondary': xmasTheme.secondary,
+          'accent': xmasTheme.accent,
+          'neutral': xmasTheme.neutral,
+          'base-100': xmasTheme.base_100,
+          'base-200': xmasTheme.base_200
         }
       }
     ]
