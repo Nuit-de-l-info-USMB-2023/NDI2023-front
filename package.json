@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "jest",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "openapi-gen": "ng-openapi-gen --input openapi/api.json --output src/app/_api"
   },
   "private": true,
   "dependencies": {
@@ -22,6 +23,7 @@
     "@flaticon/flaticon-uicons": "^3.0.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.1",
+    "ng-openapi-gen": "^0.51.0",
     "prettier-eslint": "^16.1.1",
     "rxjs": "~7.8.0",
     "save-dev": "^0.0.1-security",
