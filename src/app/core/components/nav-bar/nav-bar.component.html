@@ -19,7 +19,10 @@
       <details class="dropdown">
         <summary class="m-1 btn btn-ghost">
           Theme
-          <i class="fi fi-br-angle-down"></i>
+          <div class="hidden md:block">
+            <i class="fi fi-br-angle-down"></i>
+          </div>
+
         </summary>
         <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-200 rounded-box w-52">
           <li (click)="setTheme('light')"><a>Clair</a></li>
