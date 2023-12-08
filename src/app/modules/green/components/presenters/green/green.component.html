@@ -9,7 +9,7 @@
           </div>
         </div>
       </div>
-      <h2 #head_user_name class="text-xl">Pauline</h2>
+      <h2 #head_user_name class="text-xl">{{ post?.user?.username }}</h2>
     </div>
     <div #head_actions>
       <button class="btn btn-ghost btn-circle">
@@ -22,9 +22,7 @@
   </div>
   <div class="text-xl m-3">
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed leo enim,
-      accumsan sed dictum id, molestie nec sem. Donec a dui id enim fringilla
-      tellus.
+      {{ post?.description }}
     </p>
   </div>
   <div #illustration>
