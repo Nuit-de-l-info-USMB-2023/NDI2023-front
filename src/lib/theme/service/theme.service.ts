@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Theme} from "daisyui";
-import {BehaviorSubject, Subject} from "rxjs";
+import {Subject} from "rxjs";
 
 
 @Injectable({

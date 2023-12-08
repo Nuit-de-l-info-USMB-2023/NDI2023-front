@@ -32,8 +32,7 @@ export class NavBarComponent{
     });
   }
 
-  test(){
-    this.theme === 'light' ? this.themeService.setTheme('dark') : this.themeService.setTheme('light');
+  setTheme(theme: string) {
+    this.themeService.setTheme(theme)
   }
-
 }
