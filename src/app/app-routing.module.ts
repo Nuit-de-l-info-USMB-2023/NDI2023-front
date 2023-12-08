@@ -19,6 +19,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/user/user.module').then(m => m.UserModule),
   },
+  {
+    path: ROUTES.defis,
+    loadChildren: () =>
+      import('./modules/defis/defis.module').then(m => m.DefisModule),
+  },
   { path: ROUTES.notFound, component: NotFoundComponent },
   { path: '**', redirectTo: ROUTES.notFound },
 ];
