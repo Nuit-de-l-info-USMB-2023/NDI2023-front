@@ -1,14 +1,13 @@
-primary = "#0798F2";
-secondary = "#FF5F91";
-neutral = "#3d4451";
+primary = "#24735C";
+secondary = "#BFAC95";
+neutral = "#8C7558";
 
 //dark
-darkBg = "#171B26";
-darkBg2 = "#1C3659";
+darkBg = "#1E1E1E";
+darkBg2 = "#2A2A2A"
 
 //light
-lightBg = "#F9FAFB";
-lightBg2 = "#E5E7EB";
+lightBg = "#D9D9D9";
 
 
 
@@ -29,7 +28,7 @@ module.exports = {
           'accent': lightBg,
           'neutral': neutral,
           'base-100': darkBg,
-          '--base-200': darkBg2,
+          'base-200': darkBg2,
         },
         light: {
           ...require("daisyui/src/theming/themes")["light"],
@@ -38,7 +37,6 @@ module.exports = {
           'accent': darkBg,
           'neutral': neutral,
           'base-100': lightBg,
-          '--base-200': lightBg2,
         }
       }
     ]
