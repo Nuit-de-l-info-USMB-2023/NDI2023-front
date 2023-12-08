@@ -16,7 +16,21 @@
       coucou
     </ng-container>
     <ng-template #notConnected>
-      <button class="btn btn-neutral" (click)="test()">theme</button>
+      <details class="dropdown">
+        <summary class="m-1 btn btn-ghost">
+          Theme
+          <i class="fi fi-br-angle-down"></i>
+        </summary>
+        <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-200 rounded-box w-52">
+          <li (click)="setTheme('light')"><a>Clair</a></li>
+          <li (click)="setTheme('dark')"><a>Sombre</a></li>
+          <li (click)="setTheme('xmas')"><a>
+            Noël
+            <i class="fi fi-br-hat-santa"></i>
+            <div class="badge badge-primary">new</div>
+          </a></li>
+        </ul>
+      </details>
       <button class="btn btn-primary" (click)="openDialogAuth()" >Connexion</button>
     </ng-template>
   </div>
